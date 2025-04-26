@@ -1,5 +1,30 @@
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+
 const GsapStagger = () => {
     // TODO: Implement the gsap.stagger() method
+
+    useGSAP(() => {
+      gsap.to('.stagger-box', {
+        y: 270,
+        rotation: 360,
+        duration: 2,
+        borderRadius: '80%',
+        repeat: -1,
+        yoyo: true,
+        //stagger: 1 //after 1 second, each box drops down.
+        stagger: {
+          amount: 1.5,
+          grid: [5,2], //total box are 7. so, it moves in 5 box and 2 box formation.
+          axis: 'y',
+          ease: 'circ.out',
+          from: 'center'
+
+        }
+
+      })
+
+    }, [])
   
     return (
       <main>
